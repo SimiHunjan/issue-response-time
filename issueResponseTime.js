@@ -23,7 +23,7 @@ const graphqlWithAuth = graphql.defaults({
   },
 });
 
-// List of GitHub repositories 
+// List of GitHub repositories
 const REPOS = [
   { owner: "hiero-ledger", repo: "hiero-sdk-go" },
   { owner: "hiero-ledger", repo: "hiero-sdk-Swift" },
@@ -71,7 +71,7 @@ const MAINTAINERS = new Set([
 
 // Filter issues created from March 2025 onwards
 const FROM_YEAR = 2025;
-const FROM_MONTH = 2; // 0 represent January
+const FROM_MONTH = 2; // 0 represents January
 
 // Date falls on a business day (Mon–Fri)
 const isBusinessDay = (date) => {
@@ -213,26 +213,32 @@ async function calculateFirstResponseTimes(owner, repo) {
 
   // Print summary stats to the console
   const totalIssues = results.length;
-  const responded = results.filter(
-    (r) => r.responded_in_48_business_hours !== null
+  const respondedWithinSLA = results.filter(
+    (r) => r.responded_in_48_business_hours === "yes"
   ).length;
   const responseRate =
-    totalIssues === 0 ? "100.00" : ((responded / totalIssues) * 100).toFixed(2);
+    totalIssues === 0
+      ? "100.00"
+      : ((respondedWithinSLA / totalIssues) * 100).toFixed(2);
 
   console.log("\n📊 Summary:");
   console.log(`- Total community issues: ${totalIssues}`);
-  console.log(`- Issues with an initial response: ${responded}`);
-  console.log(`- Initial response rate: ${responseRate}%`);
+  console.log(
+    `- Issues responded to within 48 business hours: ${respondedWithinSLA}`
+  );
+  console.log(`- SLA response rate: ${responseRate}%`);
 
   if (parseFloat(responseRate) < 90) {
-    console.log("⚠️ Not all issues received a response. Let’s aim for 90%! 🚀");
+    console.log(
+      "⚠️ Not all issues were responded to within 48 business hours. Let’s aim for 90%! 🚀"
+    );
   } else {
-    console.log("🎉 Perfect response coverage! 🔥");
+    console.log("🎉 All issues responded to in the expected timeframe! 🔥");
   }
 
   return {
     rows: results,
-    summary: { repo, totalIssues, responded, responseRate },
+    summary: { repo, totalIssues, responded: respondedWithinSLA, responseRate },
   };
 }
 
@@ -246,8 +252,8 @@ function printAndSaveSummary(allResults, overallSummary) {
     overallSummary.map((r) => ({
       Repos: r.repo,
       "Total Issues": r.totalIssues,
-      Responded: r.responded,
-      "Response Rate (%)": r.responseRate,
+      "Responded Within SLA": r.responded,
+      "SLA Compliance (%)": r.responseRate,
     }))
   );
 
