@@ -23,5 +23,5 @@ A Node.js script that analyzes GitHub issues across multiple repositories and ca
 - Run the script `node issueResponseTime.js`
 - View the CSV report or console log print out
 
-![Screenshot 2025-05-14 at 3 50 47 PM](https://github.com/user-attachments/assets/227e8da6-5652-49ac-bd93-5281629a5e82)
-
+  
+![Screenshot 2025-05-14 at 4 16 06 PM](https://github.com/user-attachments/assets/5e2f7354-ee3a-48a5-9b9a-83593c791c5e)
