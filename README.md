@@ -6,7 +6,7 @@ A Node.js script that analyzes GitHub issues across multiple repositories and ca
 
 ## 🚀 Features
 
-- Pulls issues (open or closed) from specified GitHub repositories
+- Pulls issues (open or closed) from specified GitHub repositories from the provided date (default March 2025)
 - Filters out issues opened by maintainers
 - Calculates time to first response from a maintainer
 - Flags whether the response was within **48 business hours**
@@ -23,4 +23,5 @@ A Node.js script that analyzes GitHub issues across multiple repositories and ca
 - Run the script `node issueResponseTime.js`
 - View the CSV report or console log print out
 
+![Screenshot 2025-05-14 at 3 50 47 PM](https://github.com/user-attachments/assets/227e8da6-5652-49ac-bd93-5281629a5e82)
 
