@@ -1,0 +1,26 @@
+{
+  "name": "issue-response-time",
+  "version": "1.0.0",
+  "description": "Evaluates whether issues are responded to in the expected timeframe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimiHunjan/issue-response-time.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimiHunjan/issue-response-time/issues"
+  },
+  "homepage": "https://github.com/SimiHunjan/issue-response-time#readme",
+  "dependencies": {
+    "@octokit/graphql": "^8.2.2",
+    "@octokit/rest": "^21.1.1",
+    "dotenv": "^16.5.0",
+    "json2csv": "^6.0.0-alpha.2"
+  }
+}
